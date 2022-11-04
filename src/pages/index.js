@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
@@ -114,8 +115,10 @@ const IndexPage = () => {
               }
               return obj;
             });
+            console.log(new_sorted_array);
             var sorted_data = new_sorted_array.sort(
-              (a, b) => new Date(b.name) - new Date(a.name)
+              // (a, b) => new Date(b.name) - new Date(a.name)
+              (a, b) => (new moment(a.name) > new moment(b.name) ? -1 : 1)
             );
 
             setNewMagazine(sorted_data);
